@@ -1,2 +1,2 @@
-# web_scraping_and_API_accessing_FAO_EPPO
+# Web scraping and API accessing FAO EPPO
 An example of web scraping and API accessing using python
