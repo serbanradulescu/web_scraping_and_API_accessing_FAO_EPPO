@@ -83,6 +83,8 @@ def prefnames2codes(latin_name: str) -> str:
 
 
 def generate_crops_eppo_csv():
+    """create the csv taking the main crops from the FAO website and the EPPO code from the EPPO API"""
+
     url = "https://www.fao.org/economic/the-statistics-division-ess/world-census-of-agriculture/programme-for-the-world-census-of-agriculture-2000/appendix-3-alphabetical-list-of-crops-botanical-name-and-code-number/en/"
     xpath = "//*[@id='content-elements']/table/tbody/tr"
     df = web_scraper_FAO(url, xpath)
