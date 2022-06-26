@@ -82,12 +82,14 @@ def prefnames2codes(latin_name: str) -> str:
     return "Error connecting to EPPO API"
 
 
-def generate_crops_eppo_csv():
+def generate_crops_eppo_csv(is_test=False):
     """create the csv taking the main crops from the FAO website and the EPPO code from the EPPO API"""
 
     url = "https://www.fao.org/economic/the-statistics-division-ess/world-census-of-agriculture/programme-for-the-world-census-of-agriculture-2000/appendix-3-alphabetical-list-of-crops-botanical-name-and-code-number/en/"
     xpath = "//*[@id='content-elements']/table/tbody/tr"
     df = web_scraper_FAO(url, xpath)
+    if is_test == True:
+        df = df.head(40)
     df["EPPO"] = df["BOTANICAL NAME"].apply(prefnames2codes)
 
     def clean_data(x):
@@ -106,4 +108,4 @@ def generate_crops_eppo_csv():
     # Human inspection will also be necessary to ensure data quality
 
 
-# generate_crops_eppo_csv()
+# generate_crops_eppo_csv(is_test=True)
